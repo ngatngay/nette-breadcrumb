@@ -1,0 +1,31 @@
+{
+  "name": "ngatngay/nette-breadcrumb",
+  "description": "Simple Breadcrumbs navigation generator for Nette Framework",
+  "keywords": [
+    "nette",
+    "breadcrumbs",
+    "generator"
+  ],
+  "homepage": "https://github.com/ngatngay/nette-breadcrumb",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "David Zadražil",
+      "email": "me@davidzadrazil.cz",
+      "name": "Leonardo Allende",
+      "email": "alnux@ya.ru",
+      "name": "NgatNgay",
+      "email": "pmt.coder@gmail.com"
+    }
+  ],
+  "minimum-stability": "alpha",
+  "require": {
+    "php": ">=8.0",
+    "nette/nette": ">=3.0"
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  }
+}
