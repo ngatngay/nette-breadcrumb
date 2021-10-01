@@ -1,11 +1,11 @@
 {*
  * BreadCrumb Template
  *
- * @author David Zadrazil <me@davidzadrazil.cz>
+ * @author NgatNgay
  *}
 
 <ol class="breadcrumb">
-	<li n:foreach="breadCrumbLinks as $link" {if !$link->link}class="active"{/if}>
+	<li n:foreach="$breadCrumbLinks as $link" {if !$link->link}class="active"{/if}>
 		{if $link['link']}
 			<a href="{$link->link}" title="{$link->title}">{$link->title}</a>
 		{else}
