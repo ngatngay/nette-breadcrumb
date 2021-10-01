@@ -2,13 +2,12 @@
 
     namespace NgatNgay\NetteBreadCrumb;
 
-
     /**
      * Class BreadCrumbControl
      *
      * Breadcrumb Component
      * @author David Zadražil <me@davidzadrazil.cz> edit by Leonardo Allende <alnux@ya.ru>
-     *
+     * edit by NgatNgay
      */
 
     use Exception;
@@ -26,10 +25,12 @@
          */
         private $templateFile = null;
 
+
         public function customTemplate($template)
         {
             $this->templateFile = $template ? $template : __DIR__ . '/BreadCrumb.latte';
         }
+
 
         /**
          * Render function
@@ -39,28 +40,28 @@
             $this->customTemplate($this->templateFile);
 
             $this->template->setFile($this->templateFile);
-
-            $this->template->links = $this->links;
+            $this->template->breadCrumbLinks = $this->links;
             $this->template->render();
         }
 
+
         /**
          * Add link
-         *
          * @param $title
          * @param Link|null $link
-         * @param null $icon
          */
-        public function addLink($title, Link $link = null, $icon = null)
+        public function addLink($title, Link $link = null)
         {
-            $this->links[md5($title)] = ['title' => $title, 'link' => $link, 'icon' => $icon];
+            $this->links[md5($title)] = (object)[
+                'title' => $title,
+                'link'  => $link
+            ];
         }
+
 
         /**
          * Remove link
-         *
          * @param $key
-         *
          * @throws Exception
          */
         public function removeLink($key)
@@ -73,17 +74,17 @@
             }
         }
 
+
         /**
          * Edit link
          * @param $title
          * @param Link|null $link
-         * @param null $icon
          * @author Leonardo Allende <alnux@ya.ru>
          */
-        public function editLink($title, Link $link = null, $icon = null)
+        public function editLink($title, Link $link = null)
         {
             if (array_key_exists(md5($title), $this->links)) {
-                $this->addLink($title, $link, $icon);
+                $this->addLink($title, $link);
             }
         }
     }

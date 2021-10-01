@@ -8,7 +8,7 @@ Installation
 ------------
 
 ```sh
-$ composer require ngatngay/nette-breadcrumb
+composer require ngatngay/nette-breadcrumb:dev-master
 ```
 
 Using
@@ -19,7 +19,7 @@ Create component in your presenter (idelly in BasePresenter) and add link to the
 protected function createComponentBreadCrumb()
 {
 	$breadCrumb = new \NgatNgay\NetteBreadCrumb\BreadCrumb();
-	$breadCrumb->addLink('Main page', $this->link('Homepage:'), 'icon-homepage');
+	$breadCrumb->addLink('Main page', $this->link('Homepage:'));
 
 	return $breadCrumb;
 }
