@@ -47,10 +47,10 @@
 
         /**
          * Add link
-         * @param $title
-         * @param Link|null $link
+         * @param string $title
+         * @param string|null $link
          */
-        public function addLink($title, Link $link = null)
+        public function addLink(string $title, string $link = null)
         {
             $this->links[md5($title)] = (object)[
                 'title' => $title,
@@ -60,31 +60,31 @@
 
 
         /**
+         * Edit link
+         * @param string $title
+         * @param string|null $link
+         * @author Leonardo Allende <alnux@ya.ru>
+         */
+        public function editLink(string $title, string $link = null)
+        {
+            if (array_key_exists(md5($title), $this->links)) {
+                $this->addLink($title, $link);
+            }
+        }
+
+
+        /**
          * Remove link
-         * @param $key
+         * @param string $key
          * @throws Exception
          */
-        public function removeLink($key)
+        public function removeLink(string $key)
         {
             $key = md5($key);
             if (array_key_exists($key, $this->links)) {
                 unset($this->links[$key]);
             } else {
                 throw new Exception("Key does not exist.");
-            }
-        }
-
-
-        /**
-         * Edit link
-         * @param $title
-         * @param Link|null $link
-         * @author Leonardo Allende <alnux@ya.ru>
-         */
-        public function editLink($title, Link $link = null)
-        {
-            if (array_key_exists(md5($title), $this->links)) {
-                $this->addLink($title, $link);
             }
         }
     }
